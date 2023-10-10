@@ -2,7 +2,7 @@
 
 *Lookup tables* are a common use case for named vectors. Let\'s say you\'re surveying the avian community of a wetland. In your notebook, you recorded species by their 4-letter code: GREG for Great Egret, MALL for Mallard, MAWR for Marsh Wren, and KILL for Killdeer. You need a table of counts, but you need the table to show the full common name, not just the 4-letter code you used for convenience. Modify the code below to accomplish that task. First, make `species_code` a named vector, then modify the call to `table()` to use `species_code` as a lookup table that converts 4-letter codes to common names.
 
-```         
+```{r}
 species_codes <- c( "GREG" = "Great Egret", "MALL" = "Mallard", "MAWR" = "Marsh Wren", "KILL" = "Killdeer")
 
 sightings = c("GREG", "GREG", "MALL", "MAWR", "KILL", "GREG")
@@ -40,3 +40,21 @@ These questions are about a built-in R class that is an extremely common source 
 zero_datetime <- as.vector(zero_datetime)
 zero_datetime
 ```
+
+## **Q3**
+
+What are the types of `y` and `z` in the following code? Why are they different?
+
+```         
+x <- list(1, 2, 3)
+y <- x[2]
+z <- x[[2]]
+```
+
+**Q4**
+
+These questions are about the data structure underlying data frames.
+
+-   You learned that data frames are built on top of lists. In a data frame, what are the elements of the list - rows or columns?
+
+-   When called on a data frame, is `length()` equivalent to `nrow()` or `ncol()`? Why?
