@@ -108,15 +108,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<section id="computational-thinking-1" class="level1">
+<h1>Computational Thinking 1</h1>
+<p>Frankie Gerraty</p>
 <section id="q1" class="level2">
 <h2 class="anchored" data-anchor-id="q1"><strong>Q1</strong></h2>
-<p><em>Lookup tables</em> are a common use case for named vectors. Let's say you're surveying the avian community of a wetland. In your notebook, you recorded species by their 4-letter code: GREG for Great Egret, MALL for Mallard, MAWR for Marsh Wren, and KILL for Killdeer. You need a table of counts, but you need the table to show the full common name, not just the 4-letter code you used for convenience. Modify the code below to accomplish that task. First, make <code>species_code</code> a named vector, then modify the call to <code>table()</code> to use <code>species_code</code> as a lookup table that converts 4-letter codes to common names.</p>
+<p><em>Lookup tables</em> are a common use case for named vectors. Let’s say you’re surveying the avian community of a wetland. In your notebook, you recorded species by their 4-letter code: GREG for Great Egret, MALL for Mallard, MAWR for Marsh Wren, and KILL for Killdeer. You need a table of counts, but you need the table to show the full common name, not just the 4-letter code you used for convenience. Modify the code below to accomplish that task. First, make <code>species_code</code> a named vector, then modify the call to <code>table()</code> to use <code>species_code</code> as a lookup table that converts 4-letter codes to common names.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>species_codes <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">"GREG"</span> <span class="ot">=</span> <span class="st">"Great Egret"</span>, <span class="st">"MALL"</span> <span class="ot">=</span> <span class="st">"Mallard"</span>, <span class="st">"MAWR"</span> <span class="ot">=</span> <span class="st">"Marsh Wren"</span>, <span class="st">"KILL"</span> <span class="ot">=</span> <span class="st">"Killdeer"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sightings <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"GREG"</span>, <span class="st">"GREG"</span>, <span class="st">"MALL"</span>, <span class="st">"MAWR"</span>, <span class="st">"KILL"</span>, <span class="st">"GREG"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify this line to use species_codes so your counts have common names</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This line is modified to use species_codes so your counts have common names</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(species_codes[sightings])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -132,7 +135,7 @@ Great Egret    Killdeer     Mallard  Marsh Wren
 <li><p>Explain why adding 1 to a <code>POSIXct</code> datetime object increments it by a second. What <em>type</em> is <code>POSIXct</code> (type, not class)? How does <code>POSIXct</code> use that type to represent datetimes?<br>
 <br>
 <em>POSIXct datetime objects are vectors “built on top of double vectors”, where the value represents the # of seconds since an origin datetime (e.g.&nbsp;1970-01-01). Thus, by adding 1 to a datetime, you are adding a second since the units of the vector are seconds.</em></p></li>
-<li><p>What's the default <strong>origin</strong> of POSIXct objects? Write a line of code that converts the number 0 to January 1, 2000 at noon in UTC using <code>as.POSIXct()</code> (hint: look up the documentation for the <code>origin</code> parameter in the <code>as.POSIXct()</code> help page).</p>
+<li><p>What’s the default <strong>origin</strong> of POSIXct objects? Write a line of code that converts the number 0 to January 1, 2000 at noon in UTC using <code>as.POSIXct()</code> (hint: look up the documentation for the <code>origin</code> parameter in the <code>as.POSIXct()</code> help page).</p>
 <p><em>The default origin of POSIXct objects is 1970-01-01. The following code converts the origin to</em> <em>January 1, 2000.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>zero <span class="ot">&lt;-</span> <span class="dv">0</span></span>
@@ -145,8 +148,7 @@ Great Egret    Killdeer     Mallard  Marsh Wren
 </div>
 </div>
 <ul>
-<li><p>Take away the POSIXct class from the object you just made. What kind of vector is it now? Why isn't the value 0 anymore?</p>
-<p><em>The value is no longer 0 because we removed the reference “origin” value. This number represents the number of seconds from 1970-01-01.</em></p></li>
+<li>Take away the POSIXct class from the object you just made. What kind of vector is it now? Why isn’t the value 0 anymore?</li>
 </ul></li>
 </ul>
 <div class="cell">
@@ -156,19 +158,82 @@ Great Egret    Killdeer     Mallard  Marsh Wren
 <pre><code>[1] 978307200</code></pre>
 </div>
 </div>
+<p><em>The value is no longer 0 because we removed the reference “origin” value. This number represents the number of seconds from 1970-01-01.</em></p>
 </section>
 <section id="q3" class="level2">
 <h2 class="anchored" data-anchor-id="q3"><strong>Q3</strong></h2>
 <p>What are the types of <code>y</code> and <code>z</code> in the following code? Why are they different?</p>
-<pre><code>x &lt;- list(1, 2, 3)
-y &lt;- x[2]
-z &lt;- x[[2]]</code></pre>
-<p><strong>Q4</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x[<span class="dv">2</span>]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> x[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>In the code above, y is a list object while z is an element/value. These are different because a list is an ordered collection of elements, not just the elements themselves.</em></p>
+</section>
+<section id="q4" class="level2">
+<h2 class="anchored" data-anchor-id="q4"><strong>Q4</strong></h2>
 <p>These questions are about the data structure underlying data frames.</p>
 <ul>
-<li><p>You learned that data frames are built on top of lists. In a data frame, what are the elements of the list - rows or columns?</p></li>
-<li><p>When called on a data frame, is <code>length()</code> equivalent to <code>nrow()</code> or <code>ncol()</code>? Why?</p></li>
+<li><p>You learned that data frames are built on top of lists. In a data frame, what are the elements of the list - rows or columns?</p>
+<p><em>The elements of the list are columns, since columns always have the same data type.</em></p></li>
+<li><p>When called on a data frame, is <code>length()</code> equivalent to <code>nrow()</code> or <code>ncol()</code>? Why?</p>
+<p><em>length() is equivalent to ncol() because the data frame is essentially a list with each column being an element (and all the elements have the same length).</em></p></li>
 </ul>
+</section>
+<section id="q5" class="level2">
+<h2 class="anchored" data-anchor-id="q5"><strong>Q5</strong></h2>
+<p>Say you have four experimental plots that you're supplementing with fertilizer. In the code below, which subsetting operator (<code>$</code>, <code>[</code>, or <code>[[</code>) would you use to pull out the column specified by the variable <code>nutrient</code>? Does your answer change if I specify the result has to be an atomic vector? Why or why not?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>experiment <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot =</span> <span class="fu">c</span>(<span class="st">"p1"</span>, <span class="st">"p2"</span>, <span class="st">"p3"</span>, <span class="st">"p4"</span>),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">N_g =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.7</span>, <span class="fl">0.3</span>, <span class="fl">0.2</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">P_g =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>nutrient <span class="ot">&lt;-</span> <span class="st">"N_g"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>I think it depends on the format that you would like the column to be in. Using [ will give you a data frame and using [[ will give you an atomic vector. To provide an atomic vector, experiment$nutrient will not work but experiment$N_g would.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>column <span class="ot">&lt;-</span> experiment[[nutrient]]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.vector</span>(column)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>column <span class="ot">&lt;-</span> experiment[nutrient]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.vector</span>(column) <span class="co">#FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.data.frame</span>(column) <span class="co">#TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>column <span class="ot">&lt;-</span> experiment<span class="sc">$</span>nutrient <span class="co">#doesn't work</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>column <span class="ot">&lt;-</span> experiment<span class="sc">$</span>N_g</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.vector</span>(column) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="q6" class="level2">
+<h2 class="anchored" data-anchor-id="q6"><strong>Q6</strong></h2>
+<p>The elements of lists can be anything, even other lists. That's why a common use case for lists is splitting data frames into groups (note: if you're familiar with <code>dplyr::group_by()</code>, just know this is something different). Explain what the following code does in plain language. If you want to play around with the code (and I recommend you do!) you may need to install the <code>palmerpenguins</code> package. Use <code>?split</code> for more information about that function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins) </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>penguins_by_island <span class="ot">&lt;-</span> <span class="fu">split</span>(penguins, penguins<span class="sc">$</span>island)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>mean_mass <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Biscoe =</span> <span class="fu">mean</span>(penguins_by_island<span class="sc">$</span>Biscoe<span class="sc">$</span>body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Dream =</span> <span class="fu">mean</span>(penguins_by_island<span class="sc">$</span>Dream<span class="sc">$</span>body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Torgersen =</span> <span class="fu">mean</span>(penguins_by_island<span class="sc">$</span>Torgersen<span class="sc">$</span>body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>The above code takes one large tibble and splits it into a list of 3 tibbles, each with a similar structure to the original tibble but separated by their value in the “island” column. After splitting into a list, the code creates a new list composed of the mean body mass of penguins in each tibble (on each island) by using the mean() function on the body_mass_g() column, resulting in a list of the mean body mass of penguins at each island.</em></p>
+</section>
 </section>
 
 </main>

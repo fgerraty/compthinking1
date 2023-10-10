@@ -1,13 +1,17 @@
+# Computational Thinking 1
+
+Frankie Gerraty
+
 ## **Q1**
 
-*Lookup tables* are a common use case for named vectors. Let\'s say you\'re surveying the avian community of a wetland. In your notebook, you recorded species by their 4-letter code: GREG for Great Egret, MALL for Mallard, MAWR for Marsh Wren, and KILL for Killdeer. You need a table of counts, but you need the table to show the full common name, not just the 4-letter code you used for convenience. Modify the code below to accomplish that task. First, make `species_code` a named vector, then modify the call to `table()` to use `species_code` as a lookup table that converts 4-letter codes to common names.
+*Lookup tables* are a common use case for named vectors. Let's say you're surveying the avian community of a wetland. In your notebook, you recorded species by their 4-letter code: GREG for Great Egret, MALL for Mallard, MAWR for Marsh Wren, and KILL for Killdeer. You need a table of counts, but you need the table to show the full common name, not just the 4-letter code you used for convenience. Modify the code below to accomplish that task. First, make `species_code` a named vector, then modify the call to `table()` to use `species_code` as a lookup table that converts 4-letter codes to common names.
 
 ```{r}
 species_codes <- c( "GREG" = "Great Egret", "MALL" = "Mallard", "MAWR" = "Marsh Wren", "KILL" = "Killdeer")
 
 sightings = c("GREG", "GREG", "MALL", "MAWR", "KILL", "GREG")
 
-# Modify this line to use species_codes so your counts have common names
+# This line is modified to use species_codes so your counts have common names
 table(species_codes[sightings])
 ```
 
@@ -19,7 +23,7 @@ These questions are about a built-in R class that is an extremely common source 
     \
     *POSIXct datetime objects are vectors "built on top of double vectors", where the value represents the \# of seconds since an origin datetime (e.g. 1970-01-01). Thus, by adding 1 to a datetime, you are adding a second since the units of the vector are seconds.*
 
--   What\'s the default **origin** of POSIXct objects? Write a line of code that converts the number 0 to January 1, 2000 at noon in UTC using `as.POSIXct()` (hint: look up the documentation for the `origin` parameter in the `as.POSIXct()` help page).
+-   What's the default **origin** of POSIXct objects? Write a line of code that converts the number 0 to January 1, 2000 at noon in UTC using `as.POSIXct()` (hint: look up the documentation for the `origin` parameter in the `as.POSIXct()` help page).
 
     *The default origin of POSIXct objects is 1970-01-01. The following code converts the origin to* *January 1, 2000.*
 
@@ -32,29 +36,85 @@ These questions are about a built-in R class that is an extremely common source 
     zero_datetime
     ```
 
-    -   Take away the POSIXct class from the object you just made. What kind of vector is it now? Why isn\'t the value 0 anymore?
-
-        *The value is no longer 0 because we removed the reference "origin" value. This number represents the number of seconds from 1970-01-01.*
+    -   Take away the POSIXct class from the object you just made. What kind of vector is it now? Why isn't the value 0 anymore?
 
 ```{r}
 zero_datetime <- as.vector(zero_datetime)
 zero_datetime
 ```
 
+*The value is no longer 0 because we removed the reference "origin" value. This number represents the number of seconds from 1970-01-01.*
+
 ## **Q3**
 
 What are the types of `y` and `z` in the following code? Why are they different?
 
-```         
-x <- list(1, 2, 3)
+```{r}
+x <- list(1, 4, 3)
 y <- x[2]
 z <- x[[2]]
 ```
 
-**Q4**
+*In the code above, y is a list object while z is an element/value. These are different because a list is an ordered collection of elements, not just the elements themselves.*
+
+## **Q4**
 
 These questions are about the data structure underlying data frames.
 
 -   You learned that data frames are built on top of lists. In a data frame, what are the elements of the list - rows or columns?
 
+    *The elements of the list are columns, since columns always have the same data type.*
+
 -   When called on a data frame, is `length()` equivalent to `nrow()` or `ncol()`? Why?
+
+    *length() is equivalent to ncol() because the data frame is essentially a list with each column being an element (and all the elements have the same length).*
+
+## **Q5**
+
+Say you have four experimental plots that you\'re supplementing with fertilizer. In the code below, which subsetting operator (`$`, `[`, or `[[`) would you use to pull out the column specified by the variable `nutrient`? Does your answer change if I specify the result has to be an atomic vector? Why or why not?
+
+```{r}
+experiment <- data.frame(
+    plot = c("p1", "p2", "p3", "p4"),
+    N_g = c(0.2, 0.7, 0.3, 0.2),
+    P_g = c(0.1, 0.1, 0.5, 0.6)
+)
+
+nutrient <- "N_g"
+```
+
+*I think it depends on the format that you would like the column to be in. Using \[ will give you a data frame and using \[\[ will give you an atomic vector. To provide an atomic vector, experiment\$nutrient will not work but experiment\$N_g would.*
+
+```{r}
+column <- experiment[[nutrient]]
+is.vector(column)
+
+```
+
+```{r}
+column <- experiment[nutrient]
+is.vector(column) #FALSE
+is.data.frame(column) #TRUE
+```
+
+```{r}
+column <- experiment$nutrient #doesn't work
+column <- experiment$N_g
+is.vector(column) 
+```
+
+## **Q6**
+
+The elements of lists can be anything, even other lists. That\'s why a common use case for lists is splitting data frames into groups (note: if you\'re familiar with `dplyr::group_by()`, just know this is something different). Explain what the following code does in plain language. If you want to play around with the code (and I recommend you do!) you may need to install the `palmerpenguins` package. Use `?split` for more information about that function.
+
+```{r}
+library(palmerpenguins) 
+penguins_by_island <- split(penguins, penguins$island)
+mean_mass <- list(
+    Biscoe = mean(penguins_by_island$Biscoe$body_mass_g, na.rm = TRUE),
+    Dream = mean(penguins_by_island$Dream$body_mass_g, na.rm = TRUE),
+    Torgersen = mean(penguins_by_island$Torgersen$body_mass_g, na.rm = TRUE)
+)
+```
+
+*The above code takes one large tibble and splits it into a list of 3 tibbles, each with a similar structure to the original tibble but separated by their value in the "island" column. After splitting into a list, the code creates a new list composed of the mean body mass of penguins in each tibble (on each island) by using the mean() function on the body_mass_g() column, resulting in a list of the mean body mass of penguins at each island.*
