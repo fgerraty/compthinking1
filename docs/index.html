@@ -182,7 +182,7 @@ Great Egret    Killdeer     Mallard  Marsh Wren
 </section>
 <section id="q5" class="level2">
 <h2 class="anchored" data-anchor-id="q5"><strong>Q5</strong></h2>
-<p>Say you have four experimental plots that you're supplementing with fertilizer. In the code below, which subsetting operator (<code>$</code>, <code>[</code>, or <code>[[</code>) would you use to pull out the column specified by the variable <code>nutrient</code>? Does your answer change if I specify the result has to be an atomic vector? Why or why not?</p>
+<p>Say you have four experimental plots that you’re supplementing with fertilizer. In the code below, which subsetting operator (<code>$</code>, <code>[</code>, or <code>[[</code>) would you use to pull out the column specified by the variable <code>nutrient</code>? Does your answer change if I specify the result has to be an atomic vector? Why or why not?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>experiment <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot =</span> <span class="fu">c</span>(<span class="st">"p1"</span>, <span class="st">"p2"</span>, <span class="st">"p3"</span>, <span class="st">"p4"</span>),</span>
@@ -222,7 +222,7 @@ Great Egret    Killdeer     Mallard  Marsh Wren
 </section>
 <section id="q6" class="level2">
 <h2 class="anchored" data-anchor-id="q6"><strong>Q6</strong></h2>
-<p>The elements of lists can be anything, even other lists. That's why a common use case for lists is splitting data frames into groups (note: if you're familiar with <code>dplyr::group_by()</code>, just know this is something different). Explain what the following code does in plain language. If you want to play around with the code (and I recommend you do!) you may need to install the <code>palmerpenguins</code> package. Use <code>?split</code> for more information about that function.</p>
+<p>The elements of lists can be anything, even other lists. That’s why a common use case for lists is splitting data frames into groups (note: if you’re familiar with <code>dplyr::group_by()</code>, just know this is something different). Explain what the following code does in plain language. If you want to play around with the code (and I recommend you do!) you may need to install the <code>palmerpenguins</code> package. Use <code>?split</code> for more information about that function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins) </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>penguins_by_island <span class="ot">&lt;-</span> <span class="fu">split</span>(penguins, penguins<span class="sc">$</span>island)</span>
